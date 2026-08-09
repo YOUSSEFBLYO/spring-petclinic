@@ -16,20 +16,13 @@ pipeline {
     }
 
     stages {
-
-        stage('Informations') {
+        stage('Informations et compilation') {
             steps {
-                echo "=================================="
-                echo "Application : Spring PetClinic"
+                echo '=================================='
+                echo 'Application : Spring PetClinic'
                 echo "Version     : ${params.VERSION}"
-                echo "Environment : ${params.ENVIRONMENT}"
-                echo "=================================="
-            }
-        }
+                echo "Environnement : ${params.ENVIRONMENT}"
 
-        stage('Build') {
-            steps {
-                sh 'chmod +x mvnw'
                 sh './mvnw clean package -DskipTests'
             }
         }
@@ -42,10 +35,10 @@ pipeline {
 
         stage('Deploy Simulation') {
             steps {
-                echo "Déploiement de Spring PetClinic"
+                echo 'Déploiement simulé de Spring PetClinic'
                 echo "Version : ${params.VERSION}"
                 echo "Environnement : ${params.ENVIRONMENT}"
-                echo "DEPLOYMENT_SUCCESS"
+                echo 'DEPLOYMENT_SUCCESS'
             }
         }
     }
